@@ -14,6 +14,7 @@ class ModbusReadRequest(BaseModel):
     unit_id: int
     quantity: int
 
+        
 class ModbusReturnReadRequest(BaseModel):
     register_type: str
     starting_address: int

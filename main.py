@@ -1,5 +1,6 @@
 """
-    uvicorn main:app --reload
+   To run, type the following in a command line:
+   uvicorn main:app --reload
 """
 from fastapi import FastAPI, HTTPException
 import threading
@@ -13,7 +14,6 @@ app = FastAPI()
 @app.post("/write")
 async def write_registers(modbus_request: json_models.ModbusWriteRequest):
     register_type = modbus_request.register_type
-    print(modbus_request)
     if register_type not in modbus_server.FUNCTION_MAP:
         raise HTTPException(status_code=404, detail="Register type not found")
     modbus_async_server.write_values(register_type, modbus_request)
